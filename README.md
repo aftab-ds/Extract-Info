@@ -20,7 +20,7 @@ This project extracts structured information from NRIC / Passport documents usin
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/aftab-ds/document-extraction-vision.git
+git clone https://github.com/aftab-ds/Extract-Info.git
 ```
 
 2. Navigate to project folder:
