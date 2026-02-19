@@ -19,37 +19,52 @@ This project extracts structured information from NRIC / Passport documents usin
 
 1. Clone the repository:
 
-git clone https://github.com/YOUR_USERNAME/document-extraction-vision.git
+```bash
+git clone https://github.com/aftab-ds/document-extraction-vision.git
+```
 
 2. Navigate to project folder:
 
+```bash
 cd document-extraction-vision
+```
 
 3. Create virtual environment:
 
+```bash
 python -m venv venv
+```
 
 4. Activate venv:
 
 Windows:
+```bash
 venv\Scripts\activate
+```
 
 Mac/Linux:
+```bash
 source venv/bin/activate
+```
 
 5. Install dependencies:
 
+```bash
 pip install -r requirements.txt
+```
 
 6. Add environment variables:
 
 Create `.env` file and add:
-
+```bash
 OPENAI_API_KEY=your_api_key_here
+```
 
 7. Run the server:
 
+```bash
 uvicorn main:app --reload
+```
 
 ## API Endpoint
 
