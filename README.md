@@ -72,6 +72,10 @@ POST `/fetch_info/`
 
 Upload an image to extract document details.
 
+Accepted file types: `png`, `jpg/jpeg`, `webp`, `gif`, `bmp`, `tiff`.
+
+If a non-image file (or mismatched file type) is uploaded, the API returns `400 Bad Request` with a clear error message.
+
 ## Sample Output
 	
 {
