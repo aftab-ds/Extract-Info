@@ -4,8 +4,3 @@ from routers import fetch_router
 app = FastAPI()
 
 app.include_router(fetch_router.router)
-
-@app.get('/')
-def root():
-    
-    return {'message': 'INFO API'}
