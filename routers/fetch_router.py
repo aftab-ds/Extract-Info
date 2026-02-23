@@ -6,7 +6,7 @@ router = APIRouter(prefix='/fetch_info',tags=['Fetch Info'])
 
 
 
-@router.post('/')
+@router.post('')
 def fetch_info_service(img_file: UploadFile):
 
     response = fetch_info.call_gpt(img_file)
