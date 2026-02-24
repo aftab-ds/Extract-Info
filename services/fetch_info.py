@@ -7,6 +7,7 @@ from constants import SYSTEM_PROMPT, USER_PROMPT_TEMPLATE, JSON_SCHEMA
 from fastapi import UploadFile, HTTPException
 from PIL import Image
 import io
+from fastapi.responses import JSONResponse
 
 load_dotenv()
 
@@ -25,9 +26,14 @@ def validate_image(file: UploadFile):
         img = Image.open(io.BytesIO(contents))
         img.verify()
     except Exception:
-        raise HTTPException(
-            status_code=400,
-            detail="Invalid file. Please upload a valid image."
+        return JSONResponse(
+        status_code=400,
+            content={
+                "error": {
+                    "message": "Invalid file. Please upload a valid image."
+                },
+                "code": 400
+            }
         )
 
     # reset pointer so it can be reused later
