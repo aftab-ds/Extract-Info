@@ -13,10 +13,35 @@ Rules:
 USER_PROMPT_TEMPLATE = """
 Extract the required fields from this document image.
 
+Important Name Detection Rule:
+The person's full name may NOT appear next to the label "Name".
+
+For NRIC:
+If a standalone line of uppercase text appears near the top of the document
+(typically between the NRIC number and the Race/Sex/Date of Birth section),
+assume this is the full name of the person.
+
+For NRICs only:
+1.Split the detected full name into:
+- first_name
+- last_name
+
+2.If multiple words are present:
+- The last word is the last_name
+- All preceding words form the first_name
+
+Example:
+"LIM WEI MING"
+first_name = "LIM WEI"
+last_name = "MING"
+
 Additional constraints:
 - Gender must be one of: Male, Female, Prefer not to say.
-- Race must be one of: Chinese, Malay, Indian, Others.
+- Race should be from the field seen in the image. Examples: Chinese, Malay, Indian, Javanese etc. If not seen put race: Others.
 - Document type must be either: NRIC or Passport.
+
+If a field is not found, return null.
+Do not hallucinate missing values.
 """
 
 JSON_SCHEMA = {
