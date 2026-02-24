@@ -4,7 +4,7 @@ import json
 from dotenv import load_dotenv
 from openai import OpenAI
 from constants import SYSTEM_PROMPT, USER_PROMPT_TEMPLATE, JSON_SCHEMA
-from fastapi import UploadFile, HTTPException
+from fastapi import UploadFile, HTTPException,status
 from PIL import Image
 import io
 from fastapi.responses import JSONResponse
@@ -25,14 +25,15 @@ def validate_image(file: UploadFile):
     try:
         img = Image.open(io.BytesIO(contents))
         img.verify()
+
     except Exception:
         return JSONResponse(
-        status_code=400,
+        status_code=status.HTTP_400_BAD_REQUEST,
             content={
                 "error": {
                     "message": "Invalid file. Please upload a valid image."
                 },
-                "code": 400
+                "code": status.HTTP_400_BAD_REQUEST
             }
         )
 
